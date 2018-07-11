@@ -2,6 +2,7 @@ package com.thoughtworks.collection;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collector;
@@ -18,7 +19,7 @@ public class CollectionOperator {
     }
 
     public List<Integer> popEvenElments(int[] array) {
-        throw new NotImplementedException();
+        return Arrays.stream(array).filter(i -> i % 2 == 0).mapToObj(Integer::new).collect(Collectors.toList());
     }
 
     public int popLastElment(int[] array) {
