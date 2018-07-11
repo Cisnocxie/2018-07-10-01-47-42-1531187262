@@ -21,7 +21,7 @@ public class Reduce {
     }
 
     public double getAverage() {
-        throw new NotImplementedException();
+        return arrayList.stream().reduce(0, (a, b) -> a + b).floatValue() / arrayList.size();
     }
 
     public double getOrderedMedian() {
