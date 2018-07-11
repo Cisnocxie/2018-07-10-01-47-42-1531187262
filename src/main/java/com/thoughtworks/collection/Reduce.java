@@ -13,7 +13,7 @@ public class Reduce {
     }
 
     public int getMaximum() {
-        throw new NotImplementedException();
+        return arrayList.stream().mapToInt(i -> i).max().getAsInt();
     }
 
     public double getMinimum() {
