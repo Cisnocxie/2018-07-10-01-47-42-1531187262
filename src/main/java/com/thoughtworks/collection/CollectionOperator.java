@@ -23,7 +23,7 @@ public class CollectionOperator {
     }
 
     public int popLastElment(int[] array) {
-        throw new NotImplementedException();
+        return array[array.length - 1];
     }
 
     public List<Integer> popCommonElement(int[] firstArray, int[] secondArray) {
