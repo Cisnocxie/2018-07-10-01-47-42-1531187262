@@ -10,11 +10,11 @@ import java.util.stream.IntStream;
 
 public class CollectionOperator {
     public List<Integer> getListByInterval(int left, int right) {
-        return left < right ? IntStream.rangeClosed(left, right).mapToObj(i -> new Integer(i)).collect(Collectors.toList()) : IntStream.rangeClosed(right, left).mapToObj(i -> new Integer(i)).sorted(Collections.reverseOrder()).collect(Collectors.toList());
+        return left < right ? IntStream.rangeClosed(left, right).mapToObj(Integer::new).collect(Collectors.toList()) : IntStream.rangeClosed(right, left).mapToObj(Integer::new).sorted(Collections.reverseOrder()).collect(Collectors.toList());
     }
 
     public List<Integer> getEvenListByIntervals(int left, int right) {
-        throw new NotImplementedException();
+        return left < right ? IntStream.rangeClosed(left, right).filter(i -> i % 2 == 0).mapToObj(Integer::new).collect(Collectors.toList()) : IntStream.rangeClosed(right, left).filter(i -> i % 2 == 0).mapToObj(Integer::new).sorted(Collections.reverseOrder()).collect(Collectors.toList());
     }
 
     public List<Integer> popEvenElments(int[] array) {
