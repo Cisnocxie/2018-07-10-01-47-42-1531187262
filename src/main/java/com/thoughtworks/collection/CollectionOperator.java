@@ -27,7 +27,14 @@ public class CollectionOperator {
     }
 
     public List<Integer> popCommonElement(int[] firstArray, int[] secondArray) {
-        throw new NotImplementedException();
+        return Arrays.stream(firstArray).filter(i -> {
+            for(int j : secondArray) {
+                if (i == j) {
+                    return true;
+                }
+            }
+            return false;
+        }).mapToObj(Integer::new).collect(Collectors.toList());
     }
 
     public List<Integer> addUncommonElement(Integer[] firstArray, Integer[] secondArray) {
