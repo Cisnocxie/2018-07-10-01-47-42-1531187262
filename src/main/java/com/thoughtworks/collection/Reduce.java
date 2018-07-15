@@ -25,7 +25,7 @@ public class Reduce {
     }
 
     public double getAverage() {
-        return arrayList.stream().reduce(0, (a, b) -> a + b).floatValue() / arrayList.size();
+        return arrayList.stream().mapToDouble(Double::new).average().getAsDouble();
     }
 
     public double getOrderedMedian() {
@@ -63,12 +63,10 @@ public class Reduce {
     }
 
     public int getLastOdd() {
-        List<Integer> l = arrayList.stream().filter(i -> i % 2 != 0).collect(Collectors.toList());
-        return l.get(l.size() - 1);
+        return arrayList.stream().filter(i -> i % 2 != 0).reduce((i, j) -> j).get();
     }
 
     public int getIndexOfLastOdd() {
-        List<Integer> l = arrayList.stream().filter(i -> i % 2 != 0).collect(Collectors.toList());
-        return arrayList.indexOf(l.get(l.size() - 1));
+        return arrayList.indexOf(arrayList.stream().filter(i -> i % 2 != 0).reduce((i, j) -> j).get());
     }
 }
