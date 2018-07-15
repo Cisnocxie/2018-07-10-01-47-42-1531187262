@@ -35,14 +35,9 @@ public class CollectionOperator {
 
     public List<Integer> addUncommonElement(Integer[] firstArray, Integer[] secondArray) {
         List<Integer> l = new ArrayList<Integer>(Arrays.asList(firstArray));
-        l.addAll(Arrays.stream(secondArray).filter(i -> {
-            for (int j : firstArray) {
-                if (i == j) {
-                    return false;
-                }
-            }
-            return true;
-        }).collect(Collectors.toList()));
+        l.addAll(Arrays.stream(secondArray).filter(i ->
+                !Arrays.stream(firstArray).anyMatch(j -> i == j))
+                .collect(Collectors.toList()));
         return l;
     }
 }
