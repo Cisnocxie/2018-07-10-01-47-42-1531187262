@@ -51,7 +51,7 @@ public class Add {
     }
 
     public boolean isIncludedInEvenIndex(List<Integer> arrayList, Integer specialElment) {
-        return arrayList.stream().filter(i -> i % 2 == 0).collect(Collectors.toList()).contains(specialElment);
+        return arrayList.stream().filter(i -> i % 2 == 0).anyMatch(num -> num.equals(specialElment));
     }
 
     public List<Integer> getUnrepeatedFromEvenIndex(List<Integer> arrayList) {
