@@ -2,7 +2,10 @@ package com.thoughtworks.collection;
 
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 public class Reduce {
 
@@ -25,30 +28,44 @@ public class Reduce {
     }
 
     public double getOrderedMedian() {
-        throw new NotImplementedException();
+        if (arrayList.size() % 2 != 0) {
+            return arrayList.get((arrayList.size() - 1) / 2);
+        } else {
+            return (arrayList.get(arrayList.size() / 2) + arrayList.get(arrayList.size() / 2 - 1)) / 2.0;
+        }
     }
 
     public int getFirstEven() {
-        throw new NotImplementedException();
+        return arrayList.stream().filter(i -> i % 2 == 0).collect(Collectors.toList()).get(0);
     }
 
     public int getIndexOfFirstEven() {
-        throw new NotImplementedException();
+        return arrayList.indexOf(arrayList.stream().filter(i -> i % 2 == 0).collect(Collectors.toList()).get(0));
     }
 
     public boolean isEqual(List<Integer> arrayList) {
-        throw new NotImplementedException();
+        if (arrayList.size() != this.arrayList.size()) return false;
+        for (int i = 0; i < this.arrayList.size(); i++) {
+            if (this.arrayList.get(i) != arrayList.get(i)) return false;
+        }
+        return true;
     }
 
     public Double getMedianInLinkList(SingleLink singleLink) {
-        throw new NotImplementedException();
+        if (arrayList.size() % 2 != 0) {
+            return arrayList.get((arrayList.size() - 1) / 2).doubleValue();
+        } else {
+            return (arrayList.get(arrayList.size() / 2) + arrayList.get(arrayList.size() / 2 - 1)) / 2.0;
+        }
     }
 
     public int getLastOdd() {
-        throw new NotImplementedException();
+        List<Integer> l = arrayList.stream().filter(i -> i % 2 != 0).collect(Collectors.toList());
+        return l.get(l.size() - 1);
     }
 
     public int getIndexOfLastOdd() {
-        throw new NotImplementedException();
+        List<Integer> l = arrayList.stream().filter(i -> i % 2 != 0).collect(Collectors.toList());
+        return arrayList.indexOf(l.get(l.size() - 1));
     }
 }
