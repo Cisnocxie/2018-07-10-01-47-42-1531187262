@@ -65,6 +65,12 @@ public class Add {
     }
 
     public List<Integer> getProcessedList(List<Integer> arrayList) {
-        throw new NotImplementedException();
+        List<Integer> result = new ArrayList<Integer>();
+        arrayList.stream().reduce((i, j) -> {
+            Integer k = (i + j) * 3;
+            result.add(k);
+            return j;
+        });
+        return result;
     }
 }
