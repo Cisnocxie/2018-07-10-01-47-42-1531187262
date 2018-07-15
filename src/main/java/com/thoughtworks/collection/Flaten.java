@@ -14,10 +14,10 @@ public class Flaten {
     }
 
     public List<Integer> transformToOneDimesional() {
-        return Arrays.stream(array).flatMap(a -> Arrays.stream(a)).collect(Collectors.toList());
+        return Arrays.stream(array).flatMap(Arrays::stream).collect(Collectors.toList());
     }
 
     public List<Integer> transformToUnrepeatedOneDimesional() {
-        return Arrays.stream(array).flatMap(a -> Arrays.stream(a)).distinct().collect(Collectors.toList());
+        return Arrays.stream(array).flatMap(Arrays::stream).distinct().collect(Collectors.toList());
     }
 }
