@@ -28,10 +28,11 @@ public class Reduce {
     }
 
     public double getOrderedMedian() {
-        if (arrayList.size() % 2 != 0) {
-            return arrayList.get((arrayList.size() - 1) / 2);
+        int size = arrayList.size();
+        if (size % 2 != 0) {
+            return arrayList.stream().skip(size / 2).findFirst().get();
         } else {
-            return (arrayList.get(arrayList.size() / 2) + arrayList.get(arrayList.size() / 2 - 1)) / 2.0;
+            return arrayList.stream().skip(size / 2 - 1).limit(2).mapToInt(Integer::intValue).average().getAsDouble();
         }
     }
 
