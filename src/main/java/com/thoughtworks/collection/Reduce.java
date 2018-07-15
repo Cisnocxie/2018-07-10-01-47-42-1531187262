@@ -6,6 +6,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Reduce {
 
@@ -45,11 +46,12 @@ public class Reduce {
     }
 
     public boolean isEqual(List<Integer> arrayList) {
-        if (arrayList.size() != this.arrayList.size()) return false;
-        for (int i = 0; i < this.arrayList.size(); i++) {
-            if (this.arrayList.get(i) != arrayList.get(i)) return false;
+        boolean isEqual = false;
+        if (arrayList.size() == this.arrayList.size()) {
+            isEqual = IntStream.range(0, arrayList.size())
+                    .allMatch(index -> arrayList.get(index) == this.arrayList.get(index));
         }
-        return true;
+        return isEqual;
     }
 
     public Double getMedianInLinkList(SingleLink singleLink) {
