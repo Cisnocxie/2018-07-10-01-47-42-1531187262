@@ -40,7 +40,7 @@ public class Add {
         if (al.size() % 2 == 0) {
             result = (al.get(al.size() / 2) + al.get(al.size() / 2 - 1)) / 2;
         } else {
-            result = al.get(Math.round(al.size() / 2 - 1));
+            result = al.get(al.size() / 2);
         }
         return result;
     }
